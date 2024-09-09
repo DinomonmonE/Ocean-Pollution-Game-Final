@@ -166,7 +166,7 @@ let Bottle_5 = sprites.create(img`
     ....................
     `, SpriteKind.Enemy)
 Bottle_1.setPosition(randint(5, 160), 0)
-Bottle_1.setVelocity(0, randint(1, 100))
+Bottle_1.setVelocity(0, 100)
 Bottle_2.setPosition(0, 0)
 Bottle_3.setPosition(0, 0)
 Bottle_4.setPosition(0, 0)
@@ -536,24 +536,15 @@ game.onUpdateInterval(5000, function () {
 })
 forever(function () {
     if (info.score() == 5) {
-        Bottle_2.setPosition(randint(5, 160), 0)
+        Bottle_2.setPosition(randint(0, 160), 0)
         Bottle_2.setVelocity(0, randint(50, 100))
         pauseUntil(() => info.score() == 6)
-    }
-    if (info.score() == 6) {
-        Bottle_3.setPosition(randint(5, 160), 0)
+        Bottle_3.setPosition(randint(0, 160), 0)
         Bottle_3.setVelocity(0, randint(50, 100))
-        pauseUntil(() => info.score() == 7)
-    }
-    if (info.score() == 7) {
-        Bottle_4.setPosition(randint(5, 160), 0)
+        Bottle_4.setPosition(randint(0, 160), 0)
         Bottle_4.setVelocity(0, randint(50, 100))
-        pauseUntil(() => info.score() == 8)
-        if (info.score() == 9) {
-            Bottle_5.setPosition(randint(5, 160), 0)
-            Bottle_5.setVelocity(0, randint(50, 100))
-            pauseUntil(() => info.score() == 10)
-        }
+        Bottle_5.setPosition(randint(0, 160), 0)
+        Bottle_5.setVelocity(0, randint(50, 100))
     }
 })
 forever(function () {
