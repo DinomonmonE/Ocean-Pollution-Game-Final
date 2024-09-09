@@ -538,7 +538,6 @@ forever(function () {
     if (info.score() == 5) {
         Bottle_2.setPosition(randint(0, 160), 0)
         Bottle_2.setVelocity(0, randint(50, 100))
-        pauseUntil(() => info.score() == 6)
         Bottle_3.setPosition(randint(0, 160), 0)
         Bottle_3.setVelocity(0, randint(50, 100))
         Bottle_4.setPosition(randint(0, 160), 0)
