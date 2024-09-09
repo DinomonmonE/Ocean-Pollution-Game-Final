@@ -2,30 +2,28 @@ namespace SpriteKind {
     export const Boss = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (randint(0, 10) == 1) {
+    if (randint(0, 8) == 1) {
         game.showLongText("Fact 21: Every year, about 1.5 million tons of nitrogen pollution flows into the Gulf of Mexico from the Mississippi River.", DialogLayout.Full)
-    } else if (randint(0, 10) == 2) {
+    } else if (randint(0, 8) == 2) {
         game.showLongText("Fact 22: China and Indonesia are the world's biggest contributors of plastic pollution in the ocean. Combined, they account for one-third of total ocean pollution.", DialogLayout.Full)
-    } else if (randint(0, 10) == 3) {
+    } else if (randint(0, 8) == 3) {
         game.showLongText("Fact 23: Plastic makes its way to the depths of the ocean. Studies have found that crustaceans in the Marianas Trench, the ocean's deepest point, have ingested plastic.", DialogLayout.Full)
-    } else if (randint(0, 10) == 4) {
+    } else if (randint(0, 8) == 4) {
         game.showLongText("Fact 24: Approximately one truckload of plastic enters the ocean every single minute.", DialogLayout.Full)
-    } else if (randint(0, 10) == 5) {
+    } else if (randint(0, 8) == 5) {
         game.showLongText("Fact 25: The waste in the ocean takes a long, long time to decompose. Styrofoam takes 80 years, aluminum takes 200 years, and plastic takes 400 years.", DialogLayout.Full)
-    } else if (randint(0, 10) == 6) {
+    } else if (randint(0, 8) == 6) {
         game.showLongText("Fact 26: In some of the most heavily polluted sections of the ocean, plastic outweighs plankton by six times.", DialogLayout.Full)
-    } else if (randint(0, 10) == 7) {
+    } else if (randint(0, 8) == 7) {
         game.showLongText("Fact 27: There's enough plastic in the ocean to circle the Earth 400 times.", DialogLayout.Full)
-    } else if (randint(0, 10) == 8) {
+    } else if (randint(0, 8) == 8) {
         game.showLongText("Fact 28: Chemicals in heavily polluted waters can make their way back to us and cause serious health issues like reproductive problems, hormonal problems, kidney damage, and nervous system damage", DialogLayout.Full)
-    } else if (randint(0, 10) == 9) {
-        game.showLongText("", DialogLayout.Full)
-    } else if (randint(0, 10) == 10) {
-        game.showLongText("", DialogLayout.Full)
     } else {
-        game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+        game.gameOver(false)
+        game.setGameOverScoringType(game.ScoringType.HighScore)
     }
     game.gameOver(false)
+    game.setGameOverScoringType(game.ScoringType.HighScore)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (randint(0, 10) == 1) {
@@ -49,9 +47,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     } else if (randint(0, 10) == 10) {
         game.showLongText("Fact 20: Fish and other marine life often can't tell the difference between plastic and food. If the animal eats plastic, they can't digest it. The plastic fills their stomachs, so they starve to death.", DialogLayout.Full)
     } else {
-        game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+        game.gameOver(false)
+        game.setGameOverScoringType(game.ScoringType.HighScore)
     }
     game.gameOver(false)
+    game.setGameOverScoringType(game.ScoringType.HighScore)
 })
 let projectile: Sprite = null
 game.showLongText("Every day ~8 million pieces of trash end up in our oceans each day. This trash can poision our wildlife and is slowly reducing the biodiversity of our oceans. Let's see what being a fish in a modern day ocean. Use WASD or the arrow keys to move.  ", DialogLayout.Full)
@@ -538,13 +538,22 @@ forever(function () {
     if (info.score() == 5) {
         Bottle_2.setPosition(randint(5, 160), 0)
         Bottle_2.setVelocity(0, randint(50, 100))
+        pauseUntil(() => info.score() == 6)
+    }
+    if (info.score() == 6) {
         Bottle_3.setPosition(randint(5, 160), 0)
         Bottle_3.setVelocity(0, randint(50, 100))
-        Bottle_4.setVelocity(0, randint(50, 100))
+        pauseUntil(() => info.score() == 7)
+    }
+    if (info.score() == 7) {
         Bottle_4.setPosition(randint(5, 160), 0)
-        Bottle_5.setVelocity(0, randint(50, 100))
-        Bottle_5.setPosition(randint(5, 160), 0)
-        pauseUntil(() => info.score() == 6)
+        Bottle_4.setVelocity(0, randint(50, 100))
+        pauseUntil(() => info.score() == 8)
+        if (info.score() == 9) {
+            Bottle_5.setPosition(randint(5, 160), 0)
+            Bottle_5.setVelocity(0, randint(50, 100))
+            pauseUntil(() => info.score() == 10)
+        }
     }
 })
 forever(function () {
@@ -570,16 +579,24 @@ forever(function () {
         } else if (randint(0, 10) == 10) {
             game.showLongText("Fact 10:Research estimates anywhere from 15 to 51 trillion particles of floating micro plastic are in our oceans, weighing between 205-520 million pounds. This includes plastic microbeads (used as exfoliates in some personal care products) and synthetic fibers, both of which are too small to be filtered out by many waste water treatment plants.", DialogLayout.Full)
         } else {
-            game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+            game.gameOver(false)
+            game.setGameOverScoringType(game.ScoringType.HighScore)
         }
         game.gameOver(false)
+        game.setGameOverScoringType(game.ScoringType.HighScore)
     }
 })
 game.onUpdateInterval(500, function () {
     if (Bottle_1.y > 120) {
-        Bottle_1.setPosition(randint(0, 160), 0)
-        Bottle_1.setVelocity(0, randint(1, 100))
-        info.changeScoreBy(1)
+        if (info.score() <= 5) {
+            Bottle_1.setPosition(randint(0, 160), 0)
+            Bottle_1.setVelocity(0, 100)
+            info.changeScoreBy(1)
+        } else {
+            Bottle_1.setPosition(randint(0, 160), 0)
+            Bottle_1.setVelocity(0, randint(1, 100))
+            info.changeScoreBy(1)
+        }
     }
     if (info.score() >= 5) {
         if (Bottle_2.y > 120) {

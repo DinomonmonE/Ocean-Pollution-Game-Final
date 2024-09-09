@@ -19,7 +19,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     } else if (randint(0, 8) == 8) {
         game.showLongText("Fact 28: Chemicals in heavily polluted waters can make their way back to us and cause serious health issues like reproductive problems, hormonal problems, kidney damage, and nervous system damage", DialogLayout.Full)
     } else {
-        game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+        game.gameOver(false)
+        game.setGameOverScoringType(game.ScoringType.HighScore)
     }
     game.gameOver(false)
     game.setGameOverScoringType(game.ScoringType.HighScore)
@@ -46,7 +47,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     } else if (randint(0, 10) == 10) {
         game.showLongText("Fact 20: Fish and other marine life often can’t tell the difference between plastic and food. If the animal eats plastic, they can’t digest it. The plastic fills their stomachs, so they starve to death.", DialogLayout.Full)
     } else {
-        game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+        game.gameOver(false)
+        game.setGameOverScoringType(game.ScoringType.HighScore)
     }
     game.gameOver(false)
     game.setGameOverScoringType(game.ScoringType.HighScore)
@@ -577,7 +579,8 @@ forever(function () {
         } else if (randint(0, 10) == 10) {
             game.showLongText("Fact 10:Research estimates anywhere from 15 to 51 trillion particles of floating micro plastic are in our oceans, weighing between 205-520 million pounds. This includes plastic microbeads (used as exfoliates in some personal care products) and synthetic fibers, both of which are too small to be filtered out by many waste water treatment plants.", DialogLayout.Full)
         } else {
-            game.splash("Hi, who ever is looking at the code, it's currently 3:30am")
+            game.gameOver(false)
+            game.setGameOverScoringType(game.ScoringType.HighScore)
         }
         game.gameOver(false)
         game.setGameOverScoringType(game.ScoringType.HighScore)
